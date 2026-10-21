@@ -1,0 +1,9 @@
+﻿[mcp_servers.ollama]
+command = "uv"
+args = ["run", "--script", "scripts/ollama_mcp_server.py"]
+cwd = "."
+enabled = true
+enabled_tools = ["ollama_chat"]
+env_vars = ["OLLAMA_API_KEY"]
+startup_timeout_sec = 20
+tool_timeout_sec = 240
