@@ -9,3 +9,13 @@ final productProvider = FutureProvider<Product>((ref) async {
   }
   return Product.fromJson(response);
 });
+
+final productDetailsProvider =
+    FutureProvider.family<ProductElement, int>((ref, productId) async {
+  final response =
+      await ref.watch(apiServicesProvider).get('/products/$productId');
+  if (response is! Map<String, dynamic>) {
+    throw const FormatException('Unexpected product details response.');
+  }
+  return ProductElement.fromJson(response);
+});
